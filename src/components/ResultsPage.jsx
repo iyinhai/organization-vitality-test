@@ -112,6 +112,33 @@ const ResultsPage = () => {
     return explanations[dimension]?.[zone] || '';
   };
 
+  // 按钮点击处理函数
+  const handleGetFullReport = () => {
+    alert('获取完整解读功能正在开发中');
+  };
+
+  const handleBookDiagnosis = () => {
+    alert('预约组织诊断功能正在开发中');
+  };
+
+  const handleSaveResult = () => {
+    alert('保存结果图功能正在开发中');
+  };
+
+  const handleShareTeam = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: '组织生命力测试结果',
+        text: '我完成了组织生命力测试，快来看看你的组织状态吧！',
+        url: window.location.href
+      });
+    } else {
+      // 复制链接到剪贴板
+      navigator.clipboard.writeText(window.location.href);
+      alert('链接已复制到剪贴板');
+    }
+  };
+
   return (
     <div className="min-h-screen p-4 bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="max-w-4xl mx-auto">
@@ -206,16 +233,16 @@ const ResultsPage = () => {
 
           {/* 行动入口按钮 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <button className="bg-primary text-white px-6 py-3 rounded-full font-medium hover:bg-blue-600 transition duration-300">
+            <button onClick={handleGetFullReport} className="bg-primary text-white px-6 py-3 rounded-full font-medium hover:bg-blue-600 transition duration-300">
               获取完整解读
             </button>
-            <button className="bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-medium hover:bg-gray-300 transition duration-300">
+            <button onClick={handleBookDiagnosis} className="bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-medium hover:bg-gray-300 transition duration-300">
               预约组织诊断
             </button>
-            <button className="bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-medium hover:bg-gray-300 transition duration-300">
+            <button onClick={handleSaveResult} className="bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-medium hover:bg-gray-300 transition duration-300">
               保存结果图
             </button>
-            <button className="bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-medium hover:bg-gray-300 transition duration-300">
+            <button onClick={handleShareTeam} className="bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-medium hover:bg-gray-300 transition duration-300">
               分享给团队
             </button>
           </div>
